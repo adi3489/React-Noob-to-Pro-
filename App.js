@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
 //how we created nested structure div under div heading
 const parent = React.createElement(
   "div",
@@ -13,4 +16,4 @@ const parent = React.createElement(
 console.log(parent);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(parent); //render take heading object and converted
-//into h1 that reactdom can understand
+//into h1 that reactdom can understan

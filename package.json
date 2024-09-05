@@ -1,0 +1,32 @@
+{
+  "name": "react-adi",
+  "version": "1.0.0",
+  "description": "This is React noob to pro ",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adi3489/React-Noob-to-Pro-.git"
+  },
+  "keywords": [
+    "React",
+    "Pro",
+    "Aditya"
+  ],
+  "author": "\"Aditya\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adi3489/React-Noob-to-Pro-/issues"
+  },
+  "homepage": "https://github.com/adi3489/React-Noob-to-Pro-#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
