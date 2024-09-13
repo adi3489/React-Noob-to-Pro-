@@ -5,6 +5,10 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   //State variable - Super powerful variable
   const [listofRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  // When ever state varaible updates react reconsilation cycle mean re-render the components
   useEffect(() => {
     fetchData();
   }, []);
@@ -20,6 +24,9 @@ const Body = () => {
     // not good way so use opetional chaining
     //optional chaining
     setListOfRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurant(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
@@ -97,6 +104,30 @@ const Body = () => {
   ) : (
     <div classsName="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              //filter the restaurants card and update the ui
+              //Search
+              console.log(searchText);
+
+              const filteredRestaurant = listofRestaurants.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredRestaurant(filteredRestaurant);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
@@ -112,7 +143,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listofRestaurants.map((restaurant) => (
+        {filteredRestaurant.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
