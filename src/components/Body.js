@@ -20,7 +20,6 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log(json);
     // not good way so use opetional chaining
     //optional chaining
     setListOfRestaurants(
@@ -30,6 +29,8 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  console.log(listofRestaurants, "********");
   // conditional rendering like a card before rendering
   //   if (listofRestaurants.length == 0) {
   //     return <Shimmer />;
@@ -98,7 +99,11 @@ const Body = () => {
   //       },
   //     },
   //   ];
+  const filterResta = listofRestaurants.filter((res) => {
+    return res.info.avgRating > 4;
+  });
 
+  console.log(filterResta, "++++++++++++++");
   return listofRestaurants.length == 0 ? (
     <Shimmer />
   ) : (
@@ -130,11 +135,15 @@ const Body = () => {
         </div>
         <button
           className="filter-btn"
+          // onClick={() => {
+          //   setFilteredRestaurant(filterResta);
+          // }}
           onClick={() => {
             //Filter logic buddy
-            const filteredList = listofRestaurants.filter(
-              (res) => res.info.avgRating > 4
-            );
+            const filteredList = listofRestaurants.filter((res) => {
+              return res.info.avgRating > 4;
+            });
+            console.log(filteredList);
             setListOfRestaurants(filteredList);
             // console.log(listofRestaurants);
           }}
